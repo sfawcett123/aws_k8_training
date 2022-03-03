@@ -51,7 +51,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_key_pair" "generated_key" {
   key_name   = var.key_name
   public_key = file("./public_key.pem")
-  tags = merge(var.tags, { "Name" = "Steves Bastion KeyPair" })
+  tags       = merge(var.tags, { "Name" = "Steves Bastion KeyPair" })
 }
 
 #
@@ -72,5 +72,5 @@ resource "aws_instance" "bastion" {
 }
 
 output "bastion_public_ip" {
-   value = "ssh -i ${var.key_name}.pem ubuntu@${aws_instance.bastion.public_ip}"
+  value = "ssh -i ${var.key_name}.pem ubuntu@${aws_instance.bastion.public_ip}"
 }

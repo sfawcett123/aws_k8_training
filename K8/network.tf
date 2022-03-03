@@ -3,9 +3,9 @@
 #
 
 resource "aws_vpc" "main" {
-  cidr_block         = "10.0.0.0/16"
-  instance_tenancy   = "default"
-  enable_dns_support = true
+  cidr_block           = "10.0.0.0/16"
+  instance_tenancy     = "default"
+  enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = merge(var.tags, { "Name" = "Steves VPC" })
@@ -17,12 +17,12 @@ resource "aws_vpc" "main" {
 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
-  tags = merge(var.tags, { "Name" = "Public Route" })
+  tags   = merge(var.tags, { "Name" = "Public Route" })
 }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
-  tags = merge(var.tags, { "Name" = "Private Route" })
+  tags   = merge(var.tags, { "Name" = "Private Route" })
 }
 
 #
@@ -32,6 +32,7 @@ resource "aws_route_table" "private" {
 resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.0.0/24"
+  availability_zone =  "eu-west-1a"
 
   tags = merge(var.tags, { "Name" = "Public Subnet" })
 }
@@ -39,10 +40,18 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   vpc_id     = aws_vpc.main.id
   cidr_block = "10.0.2.0/24"
+  availability_zone =  "eu-west-1a"
 
   tags = merge(var.tags, { "Name" = "Private Subnet" })
 }
 
+output "public_cidr_block" {
+  value = aws_subnet.public.cidr_block
+}
+
+output "private_cidr_block" {
+  value = aws_subnet.private.cidr_block
+}
 
 #
 # Associate the route table to the Subnet 
@@ -64,7 +73,7 @@ resource "aws_route_table_association" "private" {
 
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
-  
+
   tags = merge(var.tags, { "Name" = "Steves IGW" })
 }
 
@@ -86,7 +95,7 @@ resource "aws_route" "route_1" {
 #
 
 resource "aws_eip" "natgw" {
-  vpc      = true
+  vpc = true
 
   tags = merge(var.tags, { "Name" = "Steves NGW IP" })
 }

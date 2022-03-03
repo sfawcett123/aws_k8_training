@@ -9,8 +9,8 @@ variable "key_name" {
 variable "tags" {
   type = map(any)
   default = {
-    "Owner" = "Steven Fawcett"
-    "Email" = "steve.fawcett@capgemini.com"
+    "Owner"       = "Steven Fawcett"
+    "Email"       = "steve.fawcett@capgemini.com"
     "Environment" = "Development"
   }
 }
