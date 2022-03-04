@@ -1,0 +1,11 @@
+title: "Lessons"
+github_username:  sfawcett123
+heading_anchors: true
+search_enabled: false  
+
+# Build settings
+remote_theme: pmarsceill/just-the-docs
+
+aux_links:
+  "Source":
+    - "https://github.com/sfawcett123/aws_k8_training"

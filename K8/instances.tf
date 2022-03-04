@@ -23,7 +23,7 @@ resource "aws_security_group" "kubernetes" {
   tags = merge(var.tags, { "Name" = "k8 security group" })
 }
 
-resource "aws_key_pair" "instance_key" {
+resource "aws_key_pair" "instance" {
   key_name   = var.key_name
   public_key = file("./public_key.pem")
   tags       = merge(var.tags, { "Name" = "Steves Instance KeyPair" })
