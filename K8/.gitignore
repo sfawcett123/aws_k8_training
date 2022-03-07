@@ -1,5 +1,0 @@
-.terraform
-.terraform.lock.hcl
-private_key.pem
-public_key.pem
-SSH-Key.pem
