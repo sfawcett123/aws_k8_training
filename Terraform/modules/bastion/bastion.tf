@@ -1,7 +1,7 @@
 resource "aws_security_group" "bastion" {
   name        = "bastion_security"
   description = "Allow Traffic to the Bastion"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.aws_subnet.selected.vpc_id
 
   ingress {
     description = "SSH"
@@ -22,29 +22,15 @@ resource "aws_security_group" "bastion" {
   tags = merge( var.tags , { "Module" = "Bastion" })
 }
 
-
-data "aws_ami" "server" {
-  most_recent = true
-  filter {
-    name   = "name"
-    values = var.ami_name
-  }
-  filter {
-    name   = "virtualization-type"
-    values = var.ami_virtualization_type
-  }
-  owners = var.ami_owners
-}
-
-
 resource "aws_instance" "bastion" {
   ami                         = data.aws_ami.server.id
   instance_type               = var.instance_type
-  subnet_id                   = var.public_subnet_id
+  subnet_id                   = data.aws_subnet.selected.id
   vpc_security_group_ids      = [aws_security_group.bastion.id]
   associate_public_ip_address = true
   key_name                    = var.key_pair_name
-# user_data                   = "${file("install_apache.sh")}"
+  user_data                   = file("${path.module}/install.sh")
+  iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name
 
   tags = merge( var.tags , { "Module" = "Bastion" , "Architecture" = data.aws_ami.server.architecture , "AMI_Name" = data.aws_ami.server.name })
 }
