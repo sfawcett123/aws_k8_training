@@ -1,6 +1,5 @@
 resource "aws_iam_role" "ec2_role" {
-  name        = "bastion-ec2-access"
-  description = "Allows EC2 instances to call AWS services on your behalf."
+  name        = "bastion-ec2-access-1"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -12,12 +11,10 @@ resource "aws_iam_role" "ec2_role" {
   })
  
   managed_policy_arns = [ "arn:aws:iam::aws:policy/AmazonEC2FullAccess" ]
-
-  tags = merge( var.tags , { "Module" = "Bastion" })
 }
 
 resource "aws_iam_instance_profile" "bastion_profile" {
-   name = "BastionProfile"
+   name = "BastionProfile-1"
    role = aws_iam_role.ec2_role.name
 }
 

@@ -24,14 +24,14 @@ module "bastion" {
   tags = var.common_tags
 }
 
-##module "cluster_master" {
-#  #  source             = "git::https://github.com/sfawcett123/aws_k8_training.git//Terraform/L2/network?ref=main"
-#  source           = "/Users/stevenfawcett/TRAIN/Terraform/modules/cluster/master"
-#  subnet_id        = module.network.private_subnet_id
-#  key_pair_name    = aws_key_pair.generated_key.key_name
-#
-#  tags = var.common_tags
-#}
+module "cluster_master" {
+  #  source             = "git::https://github.com/sfawcett123/aws_k8_training.git//Terraform/L2/network?ref=main"
+  source           = "/Users/stevenfawcett/TRAIN/Terraform/modules/cluster/master"
+  subnet_id        = module.network.private_subnet_id
+  key_pair_name    = aws_key_pair.generated_key.key_name
+
+  tags = var.common_tags
+}
 
 output "bastion_public_ip" {
   value = "ssh -i ${aws_key_pair.generated_key.key_name}.pem ubuntu@${module.bastion.public_ip}"
