@@ -19,7 +19,7 @@ resource "aws_security_group" "bastion" {
     ipv6_cidr_blocks = ["::/0"]
   }
 
-  tags = merge( var.tags , { "Module" = "Bastion" })
+  tags = merge(var.tags, { "Module" = "Bastion" })
 }
 
 resource "aws_instance" "bastion" {
@@ -29,8 +29,8 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids      = [aws_security_group.bastion.id]
   associate_public_ip_address = true
   key_name                    = var.key_pair_name
-  user_data                   = file("${path.module}/install.sh")
+  user_data_base64            = data.template_cloudinit_config.config.rendered
   iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name
 
-  tags = merge( var.tags , { "Module" = "Bastion" , "Architecture" = data.aws_ami.server.architecture , "AMI_Name" = data.aws_ami.server.name })
+  tags = merge(var.tags, { "Module" = "Bastion", "Architecture" = data.aws_ami.server.architecture, "AMI_Name" = data.aws_ami.server.name })
 }

@@ -1,5 +1,5 @@
-data aws_subnet "selected" {
-    id = var.subnet_id
+data "aws_subnet" "selected" {
+  id = var.subnet_id
 }
 
 

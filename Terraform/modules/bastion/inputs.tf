@@ -12,13 +12,13 @@ variable "tags" {
 }
 
 variable "ami_name" {
-   default = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+  default = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
 }
 
 variable "ami_virtualization_type" {
-   default = ["hvm"]
+  default = ["hvm"]
 }
 
 variable "ami_owners" {
-   default = ["099720109477"]
+  default = ["099720109477"]
 }

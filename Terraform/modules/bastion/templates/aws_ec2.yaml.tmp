@@ -1,0 +1,20 @@
+plugin: aws_ec2
+regions:
+  - eu-west-1
+
+keyed_groups:
+  - key: tags.Module
+    prefix: ""
+    separator: ""
+
+filters:
+  instance-state-name: running
+  tag:Project:
+      - My Project
+
+hostnames:
+  - name: private-ip-address
+    prefix: tag:Name
+
+compose:
+  ansible_host: public_dns_name

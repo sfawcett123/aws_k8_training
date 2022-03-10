@@ -10,14 +10,14 @@ resource "aws_iam_role" "ec2_role" {
       Principal = { Service = "ec2.amazonaws.com" }
     }, ]
   })
- 
-  managed_policy_arns = [ "arn:aws:iam::aws:policy/AmazonEC2FullAccess" ]
 
-  tags = merge( var.tags , { "Module" = "Bastion" })
+  managed_policy_arns = ["arn:aws:iam::aws:policy/AmazonEC2FullAccess"]
+
+  tags = merge(var.tags, { "Module" = "Bastion" })
 }
 
 resource "aws_iam_instance_profile" "bastion_profile" {
-   name = "BastionProfile"
-   role = aws_iam_role.ec2_role.name
+  name = "BastionProfile"
+  role = aws_iam_role.ec2_role.name
 }
 
