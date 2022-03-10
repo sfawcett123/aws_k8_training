@@ -1,8 +1,9 @@
 variable "common_tags" {
   type = map(any)
   default = {
-    "Project" = "My Project"
+    "Project" = "Cluster Project"
     "Owner"   = "Steve Fawcett"
+    "GUID"    = "42dd912d-d217-42b2-895d-f7433be36204"
   }
 }
 

@@ -9,8 +9,8 @@ keyed_groups:
 
 filters:
   instance-state-name: running
-  tag:Project:
-      - My Project
+  tag:GUID:
+      - ${guid} 
 
 hostnames:
   - name: private-ip-address
