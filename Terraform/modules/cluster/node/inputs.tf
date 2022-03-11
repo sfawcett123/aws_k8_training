@@ -22,3 +22,8 @@ variable "ami_virtualization_type" {
 variable "ami_owners" {
   default = ["099720109477"]
 }
+
+variable "nodes" {
+  default = 2
+}
+

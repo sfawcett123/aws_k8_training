@@ -3,7 +3,7 @@ regions:
   - eu-west-1
 
 keyed_groups:
-  - key: tags.Module
+  - key: tags.Cluster
     prefix: ""
     separator: ""
 

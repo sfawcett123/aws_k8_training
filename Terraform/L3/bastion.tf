@@ -61,7 +61,8 @@ resource "aws_instance" "bastion" {
   associate_public_ip_address = true
   key_name                    = aws_key_pair.generated_key.key_name
 
-  user_data                   = file("install.sh")
+###  user_data                   = file("install.sh")
+  user_data_base64            = data.template_cloudinit_config.config.rendered
 
   iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name 
 
