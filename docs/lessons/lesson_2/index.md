@@ -3,6 +3,7 @@ title: Drying Terraform Out
 nav_order: 20
 has_children: true
 layout: page
+parent: Guides
 ---
 
 # Drying Terraform Out 

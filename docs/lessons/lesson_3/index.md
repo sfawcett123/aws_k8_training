@@ -3,6 +3,7 @@ title: Improve Bastion
 nav_order: 30
 has_children: true
 layout: page
+parent: Guides
 ---
 
 # Improve Bastion

@@ -1,11 +1,11 @@
 ---
-title: How To
-nav_order: 5
+title: Guides
+nav_order: 10
 has_children: true
 layout: page
 ---
 
-# How to
+# Simple step by step guides
 {: .no_toc }
 
 ## Table of contents

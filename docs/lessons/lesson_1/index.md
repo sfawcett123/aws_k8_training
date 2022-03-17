@@ -3,6 +3,7 @@ title: AWS Bastion
 nav_order: 20
 has_children: true
 layout: page
+parent: Guides
 ---
 
 # Using Terraform to build an AWS Bastion Server 

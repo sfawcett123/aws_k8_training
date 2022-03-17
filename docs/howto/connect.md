@@ -1,6 +1,7 @@
 ---
-title: Connect
-nav_order: 10
+title: Connect AWS CLI
+nav_order: 20
+parent: How To
 layout: page
 ---
 
