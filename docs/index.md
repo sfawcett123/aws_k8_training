@@ -4,7 +4,7 @@ nav_order: 1
 layout: page
 ---
 
-# Lessons
+# Knowledge Base
 
 ## Overview
-Some simple step by step instructions on how to build stuff.
+Some simple hints and tips

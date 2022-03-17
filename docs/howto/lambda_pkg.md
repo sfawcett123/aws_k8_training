@@ -1,4 +1,12 @@
-## Build Package
+---
+title: Create Lambda Package
+nav_order: 10
+parent: How To
+layout: page
+---
+
+
+## Build Lambda Package
 
 ### Start Rancher
 Start Rancher or other container management tool.
